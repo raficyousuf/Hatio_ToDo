@@ -49,5 +49,24 @@
     </table>
 
     <a href="{% url 'todo_create' %}">Add New Todo</a>
+
+    <h1>Task list of completed todos </h1>
+    <ul>
+        {% for todo in completed_todos %}
+            <li><input type="checkbox" name="todo_checkbox" value="{{ todo.pk }}" checked> {{ todo.text }}</li>
+        {% endfor %}
+    </ul>
+
+
+    <h1>Task list of pending todos</h1>
+    <ul>
+        {% for todo in pending_todos %}
+            <li><input type="checkbox" name="todo_checkbox" value="{{ todo.pk }}"> {{ todo.text }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+
 </body>
 </html>

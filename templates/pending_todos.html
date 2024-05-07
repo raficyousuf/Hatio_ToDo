@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pending Todos</title>
+</head>
+<body>
+    <h1>Task list of pending todos</h1>
+    <ul>
+        {% for todo in pending_todos %}
+            <li><input type="checkbox" name="todo_checkbox" value="{{ todo.id }}"> {{ todo.text }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

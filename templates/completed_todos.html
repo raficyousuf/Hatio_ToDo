@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Completed Todos</title>
+</head>
+<body>
+    <h1>Task list of completed todos </h1>
+    <ul>
+        {% for todo in completed_todos %}
+            <li><input type="checkbox" name="todo_checkbox" value="{{ todo.id }}" checked> {{ todo.text }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

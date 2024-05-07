@@ -33,3 +33,12 @@ def todo_delete(request, pk):
         todo.delete()
         return redirect('todo_list')
     return render(request, 'todo_confirm_delete.html', {'todo': todo})
+
+
+def pending_todos(request):
+    pending_todos = Todo.objects.filter(completed=False)
+    return render(request, 'todo_list.html', {'pending_todos': pending_todos})
+
+def completed_todos(request):
+    completed_todos = Todo.objects.filter(completed=True)
+    return render(request, 'todo_list.html', {'completed_todos': completed_todos})
