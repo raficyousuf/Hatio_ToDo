@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1.md</title>
+</head>
+<body>
+    <h1>Confirm Completion</h1>
+    <p>Are you sure you want to mark "{{ todo.title }}" as completed?</p>
+    <form action="{% url 'todo_update' todo.id %}" method="post">
+        {% csrf_token %}
+        <input type="checkbox" id="completed" name="completed" {% if todo.completed %}checked{% endif %}>
+        <label for="completed">Yes, mark as completed</label>
+        <button type="submit">Confirm</button>
+    </form>
+</body>
+</html>

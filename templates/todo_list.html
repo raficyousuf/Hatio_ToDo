@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1.md</title>
+</head>
+<body>
+    <h1>Todo List</h1>
+   
+        <table border="1">
+            <tr>
+            <th>Name</th>
+            <th>Descriptions</th>
+            <th>Date</th>
+            <th>Summary</th>
+            <th>Actions</th>
+            
+        </tr>
+        {% for todo in todos %}
+        <tr>
+                <td><strong>{{ todo.title }}</strong></td>
+                 <td>{{ todo.description }}</td> 
+                 <td>{{ todo.date }}</td> 
+                 <td> 
+                {% if todo.completed %}
+                    <span style="color: rgb(53, 167, 53);">(Completed)</span>
+                {% else %}
+                    <span style="color: rgb(255, 238, 7);">(Pending)</span>
+                {% endif %}
+            </td>
+            <td>
+                <form action="{% url 'todo_update' todo.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">{% if todo.completed %}Mark as Pending{% else %}Mark as Complete{% endif %}</button>
+                </form>
+            </td>
+            <td>
+                <a href="{% url 'todo_update' todo.id %}">Edit</a>
+                <form action="{% url 'todo_delete' todo.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+
+    <a href="{% url 'todo_create' %}">Add New Todo</a>
+</body>
+</html>
